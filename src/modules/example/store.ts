@@ -31,7 +31,7 @@ class ProductStore extends VuexModule {
         page: CURRENT_PAGE_DEFAULT,
         limit: PAGE_SIZE_DEFAULT.number,
         orderBy: ORDER_BY_DEFAULT,
-        direction: ORDER_DIRECTION_DEFAULT,
+        orderDirection: ORDER_DIRECTION_DEFAULT,
         wordFilter: WORD_FILTER_DEFAULT,
         idCategory: ID_CATEGORY_DEFAULT,
     };
@@ -125,7 +125,7 @@ class ProductStore extends VuexModule {
             limit: this.numberCategoryLoad,
             page: CURRENT_PAGE_DEFAULT,
             orderBy: ORDER_BY_DEFAULT,
-            direction: ORDER_DIRECTION_DEFAULT,
+            orderDirection: ORDER_DIRECTION_DEFAULT,
         };
         if (wordFilter) {
             query.wordFilter = wordFilter;
@@ -181,7 +181,7 @@ class ProductStore extends VuexModule {
             limit: this.pageInfo.limit,
             page: this.pageInfo.page,
             orderBy: this.pageInfo.orderBy,
-            direction: this.pageInfo.direction,
+            orderDirection: this.pageInfo.direction,
         };
 
         foodService.getList(query).then((response) => {

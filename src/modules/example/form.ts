@@ -43,7 +43,7 @@ export function initData() {
             nameCustomer: values.nameCustomer?.trim(),
             phone: values.phone,
             numberPeople: values.numberPeople,
-            arrivalTime: moment(values.arrivalTime).utc().fmFullTimeWithoutSecond(),
+            arrivalTime: moment(values.arrivalTime).toDate(),
         } as IPostQueryBooking;
         const loading = ElLoading.service({
             target: '.booking-form-popup',

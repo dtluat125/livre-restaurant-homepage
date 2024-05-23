@@ -28,6 +28,7 @@ export interface IFood {
     name: string;
     price: string;
     imgLink: string;
+    categoryId?: string;
 }
 
 export interface IGetFoods {

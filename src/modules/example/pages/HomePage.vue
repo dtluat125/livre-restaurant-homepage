@@ -2,11 +2,14 @@
     <div class="main-container-layout">
         <header class="header">
             <div class="container-layout">
-                <div class="logo-img">
+                <div
+                    class="logo-img"
+                    style="background-color: white; border-radius: 0 0 8px 8px"
+                >
                     <a href="#"
                         ><img
                             width="50"
-                            src="../../../assets/images/Logo1.jpg"
+                            src="../../../assets/images/logo.png"
                             alt="Ảnh Logo"
                     /></a>
                 </div>
@@ -32,7 +35,7 @@
             <div class="container-layout">
                 <div class="row-layout min-h-100">
                     <div class="home-text">
-                        <h1>Nhà hàng GR2</h1>
+                        <h1>Nhà hàng LIVRE</h1>
                         <p>Lưu luyến trong từng hương vị</p>
                         <a href="#our-menu" class="button">Menu</a>
                     </div>
@@ -50,7 +53,7 @@
                 </div>
                 <div class="row-layout">
                     <div class="about-text">
-                        <h3>Chào mừng các bạn đến với GR2</h3>
+                        <h3>Chào mừng các bạn đến với Livre</h3>
                         <p>
                             Một nhà hàng nổi tiếng với những món ăn tuyệt vời, gắn liền
                             với tên tuổi của những đầu bếp nổi tiếng nhất Việt Nam!
@@ -73,7 +76,7 @@
         </section>
         <!-- About-Section-end -->
         <!-- Menu-Section-begin -->
-        <section class="menu-section section-padding" id="Menu">
+        <section class="menu-section section-padding" id="our-menu">
             <div class="container-layout">
                 <div class="row-layout">
                     <div class="section-title">
@@ -82,119 +85,33 @@
                 </div>
                 <div class="row-layout">
                     <div class="menu-taps">
-                        <button
-                            type="button"
-                            class="menu-tap-item active"
-                            data-target="#Lunch"
-                        >
-                            Lunch
-                        </button>
-                        <button type="button" class="menu-tap-item" data-target="#Dinner">
-                            Dinner
-                        </button>
-                        <button type="button" class="menu-tap-item" data-target="#Drinks">
-                            Drinks
-                        </button>
-                        <button
+                        <a
                             type="button"
                             class="menu-tap-item"
-                            data-target="#Desserts"
+                            :href="`#${item.id}`"
+                            v-for="item in getCategoryList"
+                            :key="item.id"
                         >
-                            Desserts
-                        </button>
+                            {{ item.name }}
+                        </a>
                     </div>
                 </div>
-                <div class="row-layout menu-tap-content active" id="Lunch">
-                    <food-menu :listFood="getFoods" />
+                <div
+                    v-for="item in getCategoryList"
+                    :key="item.id"
+                    class="row-layout menu-tap-content active"
+                    :id="item.id.toString()"
+                >
+                    <FoodMenu
+                        :listFood="getFoodListByCategory(item)"
+                        :category="item.name"
+                        v-if="getFoodListByCategory(item)?.length"
+                    />
                 </div>
-                <div class="row-layout menu-tap-content" id="Dinner">
-                    <food-menu :listFood="getFoods" />
-                </div>
-                <div class="row-layout menu-tap-content" id="Drinks">
-                    <food-menu :listFood="getFoods" />
-                </div>
-                <div class="row-layout menu-tap-content" id="Desserts"></div>
             </div>
         </section>
         <!-- Menu-Section-end -->
-        <!-- Testimonis-Section -->
-        <section class="testimony section-padding" id="Testimonial">
-            <div class="container-layout">
-                <div class="row-layout">
-                    <div class="section-title">
-                        <h2 data-title="testimony">Some Feedback</h2>
-                    </div>
-                </div>
-                <div class="row-layout">
-                    <div class="testimony-item">
-                        <div class="testimony-author">
-                            <div class="testimony-name">
-                                <h3>Chi Pu</h3>
-                                <span>Ca sĩ</span>
-                            </div>
-                            <div class="testimony-img">
-                                <img src="../../../assets/images/Test1.jpg" alt="" />
-                            </div>
-                        </div>
-                        <p>
-                            Một trong những nhà hàng ngon nhất tôi từng đến và thưởng
-                            thức. Hương vị của từng món ăn rất đậm đà, lưu luyến.
-                        </p>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="testimony-item">
-                        <div class="testimony-author">
-                            <div class="testimony-name">
-                                <h3>Trấn Thành</h3>
-                                <span>MC</span>
-                            </div>
-                            <div class="testimony-img">
-                                <img src="../../../assets/images/Test2.jpg" alt="" />
-                            </div>
-                        </div>
-                        <p>
-                            Một trong những nhà hàng ngon nhất tôi từng đến và thưởng
-                            thức. Hương vị của từng món ăn rất đậm đà, lưu luyến.
-                        </p>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="testimony-item">
-                        <div class="testimony-author">
-                            <div class="testimony-name">
-                                <h3>Đen Vâu</h3>
-                                <span>Rapper</span>
-                            </div>
-                            <div class="testimony-img">
-                                <img src="../../../assets/images/Test3.jpg" alt="" />
-                            </div>
-                        </div>
-                        <p>
-                            Một trong những nhà hàng ngon nhất tôi từng đến và thưởng
-                            thức. Hương vị của từng món ăn rất đậm đà, lưu luyến.
-                        </p>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
         <!-- Team Section begin -->
         <section class="team-section section-padding" id="Team">
             <div class="container-layout">
@@ -221,7 +138,7 @@
                     <div class="team-item">
                         <img src="../../../assets/images/team3.jpg" alt="" />
                         <div class="team-item-info">
-                            <h3>Nguyễn Tiến Tùng</h3>
+                            <h3>Đặng Trọng Luật</h3>
                             <p>Đầu bếp</p>
                         </div>
                     </div>
@@ -235,14 +152,7 @@
                         <h2 data-title="Đặt bàn">Booking</h2>
                     </div>
 
-                    <el-form
-                        ref="ruleFormRef"
-                        :model="ruleForm"
-                        :rules="rules"
-                        label-width="120px"
-                        class="rule-form-booking"
-                        :size="formSize"
-                    >
+                    <el-form label-width="120px" class="rule-form-booking">
                         <label for="name">Họ và tên</label>
                         <el-form-item>
                             <el-input
@@ -334,8 +244,8 @@
                     <div class="footer-item">
                         <h3>Liện hệ</h3>
                         <p>
-                            Phone: 0377980440 <br />
-                            Email: UyenGR2@gmail.com
+                            Phone: 01232230032 <br />
+                            Email: LuatLivre@gmail.com
                         </p>
                         <div class="social-item">
                             <i class="fab fa-facebook-f"></i>
@@ -347,7 +257,7 @@
                 </div>
                 <div class="row-layout">
                     <div class="copyright">
-                        <p>©20211. Project GR2</p>
+                        <p>©20211. Livre</p>
                     </div>
                 </div>
             </div>
@@ -358,7 +268,7 @@
 <script lang="ts">
 import { Options, setup, Vue } from 'vue-class-component';
 import { productStore } from '../store';
-import { IFood } from '../types';
+import { IFood, ICategory } from '../types';
 import { NUMBER_PEOPLE } from '../constants';
 import CompIcon from '../../../components/CompIcon.vue';
 import { initData } from '../form';
@@ -378,7 +288,13 @@ export default class HomePage extends Vue {
     nameCustomer = '';
 
     get getFoods(): Array<IFood> {
+        console.log(productStore.foodList);
         return productStore.foodList;
+    }
+
+    get getCategoryList(): Array<ICategory> {
+        console.log(productStore.categoryList);
+        return productStore.categoryList;
     }
 
     get getNumberPeople(): number {
@@ -387,6 +303,10 @@ export default class HomePage extends Vue {
 
     changePeople(number: number): void {
         productStore.setNumberPeople(number);
+    }
+
+    getFoodListByCategory(category: ICategory): IFood[] {
+        return productStore.foodList.filter((food) => food.categoryId === category.id);
     }
 
     checkTime(): boolean {
@@ -416,7 +336,7 @@ export default class HomePage extends Vue {
     }
 
     disabledDate(time: Date): boolean {
-        return time.getTime() < Date.now();
+        return time.getTime() <= Date.now() - 24 * 60 * 60 * 1000;
     }
 }
 </script>

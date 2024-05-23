@@ -1,11 +1,7 @@
 <template>
     <div class="food-item">
         <div class="menu-item-title">
-            <img
-                style="width: 100px"
-                :src="require(`../../../assets/images/${imgLink}`)"
-                alt=""
-            />
+            <img style="width: 100px" :src="imgLink" alt="" />
             <h3>{{ name }}</h3>
         </div>
         <div class="menu-item-price">{{ price }}</div>

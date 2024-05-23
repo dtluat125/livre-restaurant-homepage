@@ -1,6 +1,6 @@
 export const CURRENT_PAGE_DEFAULT = 1;
 export const ORDER_BY_DEFAULT = 'createdAt';
-export const ORDER_DIRECTION_DEFAULT = 'DESC';
+export const ORDER_DIRECTION_DEFAULT = 'desc';
 export const WORD_FILTER_DEFAULT = '';
 export const ID_CATEGORY_DEFAULT = '';
 export const CLOSE_MODAL_KEYWORD = 'Close';

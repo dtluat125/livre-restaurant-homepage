@@ -1,9 +1,12 @@
 <template>
+    <div class="category">
+        <h3>{{ category }}</h3>
+    </div>
     <div class="list-food">
-        <food
+        <Food
             v-for="(food, index) in listFood"
             :key="index"
-            :imgLink="food.imgLink"
+            :imgLink="food.foodImg?.url"
             :name="food.name"
             :price="food.price"
         />
@@ -13,7 +16,7 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import CompIcon from '../../../components/CompIcon.vue';
-import Food from '../components/Food.vue';
+import Food from './Food.vue';
 
 @Options({
     name: 'product-table-component',
@@ -25,9 +28,12 @@ import Food from '../components/Food.vue';
         listFood: {
             type: Array,
         },
+        category: {
+            type: String,
+        },
     },
 })
-export default class ProductTable extends Vue {}
+export default class FoodMenu extends Vue {}
 </script>
 
 <style lang="scss" scoped>

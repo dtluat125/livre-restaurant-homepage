@@ -1,0 +1,19 @@
+version: '3'
+services:
+    app:
+        container_name: restaurantAppAdmin
+        restart: always
+        env_file: .env
+        image: 'dtluat259/restaurant-app-homepage:main'
+        ports:
+            - '8080:${PORT}'
+        networks:
+            - app
+
+volumes:
+    app-data:
+
+networks:
+    app:
+        name: Restaurant
+        driver: bridge
